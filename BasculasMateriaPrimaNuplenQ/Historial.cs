@@ -89,26 +89,32 @@ namespace BasculasMateriaPrimaNuplenQ
             string act = this.dataGridHistorial.SelectedRows[0].Cells[4].Value.ToString();
             string tara = this.dataGridHistorial.SelectedRows[0].Cells[5].Value.ToString();
             string neto = this.dataGridHistorial.SelectedRows[0].Cells[6].Value.ToString();
+            string nomb = this.dataGridHistorial.SelectedRows[0].Cells[3].Value.ToString();
+
+
 
             // TITULO
-            e.Graphics.DrawString("Almacen de Materia Prima", new Font("arial narrow", 14, FontStyle.Bold), new SolidBrush(Color.Black), 0, 15);
-            e.Graphics.DrawString("Reimpresión Bascula de Muelles", new Font("arial narrow", 10, FontStyle.Bold), new SolidBrush(Color.Black), 0, 35);
+            e.Graphics.DrawString("Almacen de Materia Prima", new Font("arial narrow", 10, FontStyle.Bold), new SolidBrush(Color.Black), 0, 2);
+            e.Graphics.DrawString("Báscula de Muelles", new Font("arial narrow", 10, FontStyle.Bold), new SolidBrush(Color.Black), 0, 17);
+
+            //PRODUCTO
+            e.Graphics.DrawString("Producto : " + nomb, new Font("arial narrow", 11, FontStyle.Bold), new SolidBrush(Color.Black), 0, 32);
+
             // BRUTO
-            e.Graphics.DrawString("Bruto:", new Font("arial narrow", 12, FontStyle.Bold), new SolidBrush(Color.Black), 0, 50);
-            e.Graphics.DrawString(act, new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 60, 50);
-            e.Graphics.DrawString("Kg", new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 170, 50);
+            e.Graphics.DrawString("Bruto:", new Font("arial narrow", 11, FontStyle.Bold), new SolidBrush(Color.Black), 0, 47);
+            e.Graphics.DrawString(act, new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 60, 47);
+            e.Graphics.DrawString("Kg", new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 170, 47);
             // TARA
-            e.Graphics.DrawString("Tara:", new Font("arial narrow", 12, FontStyle.Bold), new SolidBrush(Color.Black), 0, 65);
-            e.Graphics.DrawString(tara, new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 60, 65);
-            e.Graphics.DrawString("Kg", new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 170, 65);
+            e.Graphics.DrawString("Tara:", new Font("arial narrow", 11, FontStyle.Bold), new SolidBrush(Color.Black), 0, 62);
+            e.Graphics.DrawString(tara, new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 60, 62);
+            e.Graphics.DrawString("Kg", new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 170, 62);
             // NETO
-            e.Graphics.DrawString("Neto:", new Font("arial narrow", 12, FontStyle.Bold), new SolidBrush(Color.Black), 0, 80);
-            e.Graphics.DrawString(neto, new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 60, 80);
-            e.Graphics.DrawString("Kg", new Font("courier new", 12, FontStyle.Bold), new SolidBrush(Color.Black), 170, 80);
+            e.Graphics.DrawString("Neto:", new Font("arial narrow", 11, FontStyle.Bold), new SolidBrush(Color.Black), 0, 77);
+            e.Graphics.DrawString(neto, new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 60, 77);
+            e.Graphics.DrawString("Kg", new Font("courier new", 11, FontStyle.Bold), new SolidBrush(Color.Black), 170, 77);
             // HORA Y FECHA
             // e.Graphics.DrawString("Fecha:", new Font("arial narrow", 10, FontStyle.Bold), new SolidBrush(Color.Black), 0, 1);
-            e.Graphics.DrawString(Fec + " " + hora, new Font("courier new", 9, FontStyle.Bold), new SolidBrush(Color.Black), 0, 110);
-
+            e.Graphics.DrawString(DateTime.Now.ToString(), new Font("courier new", 9, FontStyle.Bold), new SolidBrush(Color.Black), 0, 92);
         }
 
         private void atrasToolStripMenuItem_Click(object sender, EventArgs e)
