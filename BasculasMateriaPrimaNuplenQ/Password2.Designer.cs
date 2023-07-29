@@ -53,12 +53,14 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(168, 31);
             this.txtPass.TabIndex = 4;
+            this.txtPass.Click += new System.EventHandler(this.txtPass_Click);
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 58);
+            this.label1.Location = new System.Drawing.Point(6, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 3;
@@ -77,6 +79,7 @@
             this.Name = "Password2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password";
+            this.Load += new System.EventHandler(this.Password2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtIpMoxa = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.txtPortDB = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtIPServer = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtIpMoxa = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Comunicación";
             // 
+            // txtIpMoxa
+            // 
+            this.txtIpMoxa.Location = new System.Drawing.Point(307, 101);
+            this.txtIpMoxa.Name = "txtIpMoxa";
+            this.txtIpMoxa.Size = new System.Drawing.Size(129, 27);
+            this.txtIpMoxa.TabIndex = 32;
+            this.txtIpMoxa.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtIpMoxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(225, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 21);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "IP Moxa";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(345, 201);
@@ -88,6 +106,8 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(129, 27);
             this.txtPass.TabIndex = 29;
+            this.txtPass.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // txtPortDB
             // 
@@ -95,6 +115,8 @@
             this.txtPortDB.Name = "txtPortDB";
             this.txtPortDB.Size = new System.Drawing.Size(129, 27);
             this.txtPortDB.TabIndex = 29;
+            this.txtPortDB.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtPortDB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // label10
             // 
@@ -120,6 +142,8 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(129, 27);
             this.txtUsuario.TabIndex = 27;
+            this.txtUsuario.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // label11
             // 
@@ -136,6 +160,8 @@
             this.txtBase.Name = "txtBase";
             this.txtBase.Size = new System.Drawing.Size(129, 27);
             this.txtBase.TabIndex = 27;
+            this.txtBase.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // label8
             // 
@@ -152,6 +178,8 @@
             this.txtPortServer.Name = "txtPortServer";
             this.txtPortServer.Size = new System.Drawing.Size(129, 27);
             this.txtPortServer.TabIndex = 25;
+            this.txtPortServer.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtPortServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // label19
             // 
@@ -168,6 +196,8 @@
             this.txtIPServer.Name = "txtIPServer";
             this.txtIPServer.Size = new System.Drawing.Size(129, 27);
             this.txtIPServer.TabIndex = 23;
+            this.txtIPServer.Click += new System.EventHandler(this.txtIPServer_Click);
+            this.txtIPServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPServer_KeyPress);
             // 
             // label18
             // 
@@ -177,22 +207,6 @@
             this.label18.Size = new System.Drawing.Size(76, 21);
             this.label18.TabIndex = 22;
             this.label18.Text = "IP Server";
-            // 
-            // txtIpMoxa
-            // 
-            this.txtIpMoxa.Location = new System.Drawing.Point(307, 101);
-            this.txtIpMoxa.Name = "txtIpMoxa";
-            this.txtIpMoxa.Size = new System.Drawing.Size(129, 27);
-            this.txtIpMoxa.TabIndex = 32;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 21);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "IP Moxa";
             // 
             // Configuracion
             // 

@@ -74,7 +74,7 @@ namespace BasculasMateriaPrimaNuplenQ
             client.DataReceived += Client_DataReceived;
             client.StringEncoder = Encoding.ASCII; // Ajusta el encoding según el protocolo utilizado por el Moxa NPort
             client.Connect(ipServer, portServer); // Ingresa la dirección IP y el puerto del Moxa NPort
-
+           
             string serverB = c.txtIPServer.Text.ToString();
             string database = c.txtBase.Text.ToString();
             string portB = c.txtPortDB.Text.ToString();
@@ -303,6 +303,106 @@ namespace BasculasMateriaPrimaNuplenQ
             string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
             oskProcess = Process.Start(keyboardPath);
 
+        }
+
+        private void historialToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Password p = new Password();
+            p.Show();
+        }
+
+        private void configuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Password2 p = new Password2();
+            p.Show();
+        }
+
+        private void salirToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                string valorBusqueda = txtCodigo.Text;
+
+                try
+                {
+                    using (MySqlConnection conexion = cnn.getConexion())
+                    {
+                        if (conexion.State == ConnectionState.Closed)
+                        {
+                            conexion.Open();
+                        }
+
+                        string consulta = "SELECT Producto FROM Codigos WHERE Codigo = @valorBusqueda;";
+                        MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                        comando.Parameters.AddWithValue("@valorBusqueda", valorBusqueda);
+
+                        object resultado = comando.ExecuteScalar();
+
+                        if (resultado != null)
+                        {
+                            txtNombre.Text = resultado.ToString();
+                            closeOnscreenKeyboard();
+                        }
+                        else
+                        {
+                            txtNombre.Text = "No se encontró ningún resultado.";
+                            closeOnscreenKeyboard();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al realizar la búsqueda: " + ex.Message);
+                }
+
+            }
+        }
+
+        private void closeOnscreenKeyboard()
+        {
+
+            int iHandle = FindWindow("IPTIP_Main_Window", "");
+            if (iHandle > 0)
+            {
+
+                SendMessage(iHandle, WM_SYSCOMMAND, SC_CLOSE, 0);
+            }
+        }
+
+        private void txtTara_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+
+                double bruto = Convert.ToDouble(lblIndicador.Text.ToString());
+                double neto;
+
+                if (!string.IsNullOrEmpty(txtTara.Text))
+                {
+                    if (double.Parse(txtTara.Text) >= bruto)
+                    {
+                        MessageBox.Show("Tara Incorrecta");
+                    }
+                    else
+                    {
+                        neto = bruto - double.Parse(txtTara.Text);
+                        txtNeto.Text = neto.ToString();
+                        txtBruto.Text = bruto.ToString();
+                        closeOnscreenKeyboard();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Favor de Ingresar Tara");
+                    closeOnscreenKeyboard();
+                }
+            }
         }
     }
 }
