@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="IpServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.1.71</Value>
+      <Value Profile="(Default)">192.168.1.99</Value>
     </Setting>
     <Setting Name="Port" Type="System.String" Scope="User">
       <Value Profile="(Default)">4001</Value>

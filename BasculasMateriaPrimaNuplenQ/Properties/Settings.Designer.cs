@@ -25,7 +25,7 @@ namespace BasculasMateriaPrimaNuplenQ.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.71")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.99")]
         public string IpServer {
             get {
                 return ((string)(this["IpServer"]));

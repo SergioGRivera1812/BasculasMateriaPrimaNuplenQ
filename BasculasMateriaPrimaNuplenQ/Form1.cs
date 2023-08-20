@@ -27,6 +27,8 @@ namespace BasculasMateriaPrimaNuplenQ
 
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_CLOSE = 0xF060;
+        public string Usuario { get; set; }
+        public string Rol { get; set; }
 
         public object SelectedValue { get; }
 
@@ -69,12 +71,12 @@ namespace BasculasMateriaPrimaNuplenQ
             c.Configuracion_Load(sender, e);
             string ipServer = c.txtIpMoxa.Text;
             int portServer = Convert.ToInt32(c.txtPortServer.Text);
-
+            /*
             client = new SimpleTcpClient();
             client.DataReceived += Client_DataReceived;
             client.StringEncoder = Encoding.ASCII; // Ajusta el encoding según el protocolo utilizado por el Moxa NPort
             client.Connect(ipServer, portServer); // Ingresa la dirección IP y el puerto del Moxa NPort
-           
+           */
             string serverB = c.txtIPServer.Text.ToString();
             string database = c.txtBase.Text.ToString();
             string portB = c.txtPortDB.Text.ToString();
@@ -82,7 +84,33 @@ namespace BasculasMateriaPrimaNuplenQ
             string password = c.txtPass.Text.ToString();
 
             cnn = new Conexion(serverB, database, portB, user, password);
-            dataGridHistorial.DataSource = load();
+            dataGridHistorial.DataSource = Vista();
+            lblUsuario.Text =  Usuario;
+            lblRol.Text = Rol;
+
+            switch (lblRol.Text)
+            {
+                case "Admin":
+                    MenuConf.Enabled = true;
+                    MenuUsua.Enabled = true;
+                    MenuHist.Enabled = true;
+                    break;
+
+                case "Supervisor":
+                    MenuConf.Enabled = true;
+                    MenuUsua.Enabled = true;
+                    MenuHist.Enabled = true;
+                    break;
+
+                case "Operador":
+                    MenuConf.Enabled = false;
+                    MenuUsua.Enabled = false;
+                    MenuHist.Enabled = true;
+                    break;
+            }
+
+
+
         }
 
         private void Client_DataReceived(object sender, SimpleTCP.Message e)
@@ -122,21 +150,24 @@ namespace BasculasMateriaPrimaNuplenQ
             txtNeto.Text = "";
         }
 
-        private BindingSource bs = new BindingSource();
+        
 
-        private DataTable load()
+        private BindingSource bsv = new BindingSource();
+
+        private DataTable Vista()
         {
             DataTable vista = new DataTable();
-            string vista_gral = "select*from Historial;";
+            string vista_gral = "select*from VistaHistorial;";
             using (MySqlCommand cmd = new MySqlCommand(vista_gral, cnn.getConexion()))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
                 vista.Load(reader);
             }
-            bs.DataSource = vista;
+            bsv.DataSource = vista;
 
             return vista;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -185,25 +216,34 @@ namespace BasculasMateriaPrimaNuplenQ
             }
             else
             {
-                string GuardarEt = "INSERT INTO Historial (Codigo,Producto,Bruto,Tara,Neto,Fecha,Hora) values ('" +
-                        txtCodigo.Text + "','" + txtNombre.Text + "','" + txtBruto.Text + "','" + txtTara.Text + "','" + txtNeto.Text + "','" + DateTime.Now.ToString("d") + "','" + DateTime.Now.ToString("t") + "');";
+                string selectIdQuery = "SELECT ID FROM Usuarios WHERE Usuario = @usuario";
+                MySqlCommand idCmd = new MySqlCommand(selectIdQuery, cnn.getConexion());
+                idCmd.Parameters.AddWithValue("@usuario", lblUsuario.Text);
 
-                MySqlCommand comando = new MySqlCommand(GuardarEt, cnn.getConexion());
-                comando.ExecuteNonQuery();
+                object userIdResult = idCmd.ExecuteScalar();
+                if (userIdResult != null && userIdResult != DBNull.Value)
+                {
+                    int userId = Convert.ToInt32(userIdResult);
 
-                PrinterSettings ps = new PrinterSettings();
-                printDocument1.PrinterSettings = ps;
-                printDocument1.PrintPage += Imprimir;
-                printDocument1.Print();
+                    string GuardarEt = "INSERT INTO Historial (Codigo,Producto,Bruto,Tara,Neto,Fecha,Hora,IdUsuario) values ('" +
+                        txtCodigo.Text + "','" + txtNombre.Text + "','" + txtBruto.Text + "','" + txtTara.Text + "','" + txtNeto.Text + "','" + DateTime.Now.ToString("d") + "','" + DateTime.Now.ToString("t") + "','" + userId + "');";
 
-                dataGridHistorial.DataSource = load();
+                    MySqlCommand comando = new MySqlCommand(GuardarEt, cnn.getConexion());
+                    comando.ExecuteNonQuery();
 
-                txtTara.Text = string.Empty;
-                txtNeto.Text = string.Empty;
-                txtBruto.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtCodigo.Text = string.Empty;
+                    PrinterSettings ps = new PrinterSettings();
+                    printDocument1.PrinterSettings = ps;
+                    printDocument1.PrintPage += Imprimir;
+                    printDocument1.Print();
 
+                    dataGridHistorial.DataSource = Vista();
+
+                    txtTara.Text = string.Empty;
+                    txtNeto.Text = string.Empty;
+                    txtBruto.Text = string.Empty;
+                    txtNombre.Text = string.Empty;
+                    txtCodigo.Text = string.Empty;
+                }
             }
 
 
@@ -403,6 +443,12 @@ namespace BasculasMateriaPrimaNuplenQ
                     closeOnscreenKeyboard();
                 }
             }
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios s = new Usuarios();
+            s.Show();
         }
     }
 }

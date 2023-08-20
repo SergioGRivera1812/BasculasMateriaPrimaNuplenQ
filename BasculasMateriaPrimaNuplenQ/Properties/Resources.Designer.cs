@@ -63,6 +63,47 @@ namespace BasculasMateriaPrimaNuplenQ.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap descargar__1_ {
+            get {
+                object obj = ResourceManager.GetObject("descargar (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap descargar__2_ {
+            get {
+                object obj = ResourceManager.GetObject("descargar (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgbin_computer_icons_user_login_desktop_others_V9Mfr9BtTcdzmHbTg6n8nWUMt {
+            get {
+                object obj = ResourceManager.GetObject("imgbin-computer-icons-user-login-desktop-others-V9Mfr9BtTcdzmHbTg6n8nWUMt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgbin_computer_icons_user_login_desktop_others_V9Mfr9BtTcdzmHbTg6n8nWUMt_modified {
+            get {
+                object obj = ResourceManager.GetObject("imgbin-computer-icons-user-login-desktop-others-V9Mfr9BtTcdzmHbTg6n8nWUMt-modifie" +
+                        "d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap impresora {
             get {
                 object obj = ResourceManager.GetObject("impresora", resourceCulture);
@@ -76,6 +117,46 @@ namespace BasculasMateriaPrimaNuplenQ.Properties {
         internal static System.Drawing.Bitmap imprimir_Icon {
             get {
                 object obj = ResourceManager.GetObject("imprimir Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logito {
+            get {
+                object obj = ResourceManager.GetObject("logito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo1 {
+            get {
+                object obj = ResourceManager.GetObject("logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usuario {
+            get {
+                object obj = ResourceManager.GetObject("usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zyro_image {
+            get {
+                object obj = ResourceManager.GetObject("zyro-image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -54,7 +54,7 @@ namespace BasculasMateriaPrimaNuplenQ
         private DataTable load()
         {
             DataTable vista = new DataTable();
-            string vista_gral = "select*from Historial;";
+            string vista_gral = "select*from VistaHistorial;";
             using (MySqlCommand cmd = new MySqlCommand(vista_gral, cnn.getConexion()))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -76,7 +76,7 @@ namespace BasculasMateriaPrimaNuplenQ
             {
                 if (bs.DataSource != null)
                 {
-                    bs.Filter = $"Codigo LIKE '%{txtFiltrar.Text}%' OR Fecha LIKE '%{txtFiltrar.Text}%'";
+                    bs.Filter = $"Codigo LIKE '%{txtFiltrar.Text}%' OR Fecha LIKE '%{txtFiltrar.Text}%' OR Usuario LIKE '%{txtFiltrar.Text}%' ";
                 }
             }
             catch (Exception ex)
@@ -150,6 +150,7 @@ namespace BasculasMateriaPrimaNuplenQ
             s1.SetCellValue("G" + celdaCabecera, "Neto");
             s1.SetCellValue("H" + celdaCabecera, "Hora");
             s1.SetCellValue("I" + celdaCabecera, "Fecha");
+            s1.SetCellValue("J" + celdaCabecera, "Usuario");
 
             // Obtener los datos del DataGridView
             DataGridView dgvDatos = dataGridHistorial; // Reemplaza "tuDataGridView" por el nombre de tu DataGridView

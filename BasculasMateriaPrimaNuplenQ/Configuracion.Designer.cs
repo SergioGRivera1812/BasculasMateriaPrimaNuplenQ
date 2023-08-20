@@ -215,7 +215,7 @@
             this.ClientSize = new System.Drawing.Size(492, 290);
             this.Controls.Add(this.groupBox3);
             this.Name = "Configuracion";
-            this.Text = "Configuracion";
+            this.Text = "Configuración";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Configuracion_FormClosed);
             this.Load += new System.EventHandler(this.Configuracion_Load);
             this.groupBox3.ResumeLayout(false);
